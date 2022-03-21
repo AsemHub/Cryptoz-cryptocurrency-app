@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { SettingProvider } from '../../providers/setting/setting';
 import { AdmobFreeProvider } from '../../providers/admob/admob';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -10,15 +11,18 @@ import { AdmobFreeProvider } from '../../providers/admob/admob';
 })
 export class SettingsPage {
 
-  currencyList = ['usd','aud','eur','cad','aed','gbp','jpy','idr','inr'];
+  currencyList = ['usd','aud','eur','cad','aed','gbp','jpy','idr','inr', 'lyd', 'egp', 'rub', 'syp', 'sdg', 'asem'];
+  languageList = ['en', 'ar'];
   currentCurrency = null;
+  currentLanguage = null;
   isDarkTheme  = true;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public settingProvider:SettingProvider,
               public alertCtrl: AlertController,
-              public admob:AdmobFreeProvider) {
+              public admob:AdmobFreeProvider,
+              private _translate:TranslateService) {
   }
 
 
@@ -65,6 +69,13 @@ export class SettingsPage {
   changeCurrentCurrency() {
     this.addCurrentCurrencyFlag();
     this.settingProvider.currentSetting.currency = this.currentCurrency.toUpperCase();
+    this.settingProvider.setSettings();
+  }
+
+  changeCurrentLanguage(event) {
+    console.log("EVENT SELECT LINGO", event)
+    this.settingProvider.currentSetting.language = event; 
+    this._translate.use(event);
     this.settingProvider.setSettings();
   }
 

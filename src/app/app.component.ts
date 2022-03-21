@@ -7,6 +7,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SettingProvider } from '../providers/setting/setting';
 import { Network } from '@ionic-native/network';
 
+import { TranslateService } from '@ngx-translate/core';
+
+
 @Component({
   templateUrl: 'app.html',
 })
@@ -19,7 +22,12 @@ export class MyApp {
               splashScreen: SplashScreen,
               private network: Network,
               private toastCtrl: ToastController,
-              public setting:SettingProvider) {
+              public setting:SettingProvider,
+              private _translate:TranslateService
+              ) {
+
+                this._translate.setDefaultLang('en');
+                this._translate.use('en');
 
     platform.ready().then(() => {  
         this.setting.settingSubject.subscribe((data) => {

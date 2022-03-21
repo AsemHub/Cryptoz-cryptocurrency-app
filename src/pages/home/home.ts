@@ -8,6 +8,8 @@ import { Events } from 'ionic-angular';
 import { watchListPage } from '../watch-list/watch-list';
 import { SettingProvider } from '../../providers/setting/setting';
 import { AdmobFreeProvider } from '../../providers/admob/admob';
+import { ConnectedOverlayDirective } from '@angular/cdk/overlay';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'page-home',
@@ -22,9 +24,8 @@ export class HomePage {
 
   //store coins data
   COIN_DATA = [];
-
   //names of columns that will be displayed
-  displayedColumns = [ 'rank', 'name' , 'current_price', 'price_change_24' , 'price_change_7d' , 'price_change_14d', 'price_change_30d'];
+  displayedColumns = [ 'rank', 'name' , 'current_price', 'price_change_24' , 'price_change_7d' ,  'price_change_30d'];
   dataSource =  new MatTableDataSource(this.COIN_DATA);
 
   search = false; //Search bar
@@ -32,7 +33,8 @@ export class HomePage {
   currentPage = 1;//current Page pagination
   maxPageNumber = 40 // maximum page pagination, currently, they are 500 coins on the market
   loading = true; // display loading when fetching data from API
-
+  currencyPrice = null;
+  // currentCurrency = "USD" // default currency
   currentCurrency = "USD" // default currency
 
   constructor(public navCtrl: NavController,
@@ -41,7 +43,9 @@ export class HomePage {
               public events: Events,
               public settingsProvider : SettingProvider,
               public admob:AdmobFreeProvider,
-              public platform: Platform) { 
+              public platform: Platform,
+              private translateService: TranslateService
+              ) { 
        this.api.getnews();
   }
 
@@ -49,7 +53,19 @@ export class HomePage {
   ionViewWillEnter(){
     this.admob.showRandomAds();
   }
-  
+  currencyOut(currency, element){
+    console.log("cuurency out element", element)
+    return this.currencyPrice[currency]*element
+  }
+  fetchCurrencyApi() {
+    return new Promise((resolve) => {
+      this.api.getCurrency().then(e=>{
+        this.currencyPrice = e;
+        resolve(true);
+      })
+    });
+
+  }
   ionViewDidLoad() {
     this.platform.ready().then(()=>{
       this.admob.prepareBanner();
@@ -59,6 +75,8 @@ export class HomePage {
         this.currentCurrency = this.settingsProvider.currentSetting.currency;
     })
 
+    this.fetchCurrencyApi().then(()=>console.log("FETCH CURRENCY API DONE"))
+    // this.translateService.get('APP.CURRENCIES.usd').subscribe((txt: string) => {this.currentCurrency = txt});
 
     this.fetch_coins().then(()=>{
       this.checkFavorite();
@@ -90,7 +108,7 @@ export class HomePage {
             case 'current_price': return item.market_data.current_price[this.currentCurrency.toLowerCase()];
             case 'price_change_24': return item.market_data.price_change_percentage_24h;
             case 'price_change_7d': return item.market_data.price_change_percentage_7d;
-            case 'price_change_14d': return item.market_data.price_change_percentage_14d;
+            // case 'price_change_14d': return item.market_data.price_change_percentage_14d;
             case 'price_change_30d': return item.market_data.price_change_percentage_30d;
             default: return item[property];
           }

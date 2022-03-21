@@ -1,0 +1,11 @@
+{
+  "APP": {
+    "HOME": {
+      "PRICE": "$السعر"
+    },
+    "CURRENCIES": {
+      "usd": "دولار"
+  },
+    "BODY": "It works very well!"
+  }
+}

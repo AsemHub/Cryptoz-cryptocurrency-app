@@ -1,0 +1,17 @@
+{
+  "APP": {
+    "HOME": {
+      "PRICE": "$Price"
+    },
+    "CURRENCIES": {
+        "usd": "US DOLLAR",
+        "lyd": "LYD",
+        "syp": "SYP",
+        "sdg": "SDG",
+        "rub": "RUB",
+        "egp": "EGP",
+        "asem": "ASEM"
+    },
+    "BODY": "It works very well!"
+  }
+}

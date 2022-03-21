@@ -5,7 +5,7 @@ import * as x2js  from 'xml2js';
 
 
 const default_api_url = "https://api.coingecko.com/api/v3";
-const default_news_rss = "https://cointelegraph.com/rss";
+const default_news_rss = "http://cointelegraph.com/rss";
 
 @Injectable()
 export class ApiProvider {
@@ -70,6 +70,30 @@ export class ApiProvider {
                   resolve(result);
               });
           }, (e) => {
+            console.log("FOUND THE PROBLEM")
+              // reject(e);
+          })
+     })
+  }
+  getCurrency() {
+    return new Promise((resolve, reject)=> {
+      var headers = new HttpHeaders();
+      headers.append('Access-Control-Allow-Origin' , '*');
+      headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+
+        this.http.get('https://62376f9fb08c39a3af805515.mockapi.io/currencies', {responseType : 'json' , headers: headers })
+        .subscribe((data:any)=>{
+          console.log("LOADING DATA !!!",data)
+          resolve(data[0])
+          reject({
+            "egp":0,
+            "lyd":0,
+            "sdg":0
+          }
+            )
+          return data;
+          }, (e) => {
+            console.log("REJECTED! ")
               reject(e);
           })
      })

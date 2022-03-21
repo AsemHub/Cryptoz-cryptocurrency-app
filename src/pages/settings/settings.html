@@ -28,6 +28,14 @@
               </ion-option>
             </ion-select>
       </ion-item>
+      <ion-item class="item-currency"> 
+          <ion-label>Language</ion-label>
+          <ion-select  [selectOptions]="{cssClass : 'select-language'}" (ionChange)="changeCurrentLanguage($event)" (click)="initCurrencyIcon()" [(ngModel)]="currentLanguage">
+              <ion-option  class="select-language" *ngFor="let language of languageList" [value]="language" >
+                {{language | uppercase}}
+              </ion-option>
+            </ion-select>
+      </ion-item>
     </ion-list>
     <ion-list class="list-setting">
         <ion-list-header>

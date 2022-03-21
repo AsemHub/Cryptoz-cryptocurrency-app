@@ -11,11 +11,13 @@ export class SettingProvider {
   public settingSubject : BehaviorSubject<SettingModel> ;
   public currentSetting : SettingModel;
 
+
   constructor(private storage : Storage) {
     //initial default settings 
     this.currentSetting = {
       theme : 'dark',
       currency : 'USD',
+      language :'en'
     };
     this.settingSubject = new BehaviorSubject(this.currentSetting);
 
@@ -24,6 +26,7 @@ export class SettingProvider {
     this.settingSubject.subscribe((newsetting) => {
       this.currentSetting = newsetting;
     })
+
   }
 
   loadSetting(){

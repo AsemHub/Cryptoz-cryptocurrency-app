@@ -21,11 +21,16 @@
     </ion-row>
     <ion-row>
         <ion-col text-right>
-            {{coin.market_data.high_24h[currentCurrency.toLowerCase()]  |  currency:currentCurrency }} ({{currentCurrency | uppercase}})
+          {{(coin.market_data.low_24h[currentCurrency.toLowerCase()] ? 
+            coin.market_data.low_24h[currentCurrency.toLowerCase()] :
+            highLowDetails(currentCurrency.toLowerCase(),coin.market_data.low_24h["usd"]))  |  currency:currentCurrency }} ({{currentCurrency | uppercase}})
+
         </ion-col>
         <ion-col col-1> - </ion-col>
         <ion-col text-left>
-            {{coin.market_data.low_24h[currentCurrency.toLowerCase()]  |  currency:currentCurrency }}  ({{currentCurrency | uppercase}})
+          {{(coin.market_data.high_24h[currentCurrency.toLowerCase()] ? 
+            coin.market_data.high_24h[currentCurrency.toLowerCase()] :
+            highLowDetails(currentCurrency.toLowerCase(),coin.market_data.high_24h["usd"]))  |  currency:currentCurrency }} ({{currentCurrency | uppercase}})
         </ion-col>
      </ion-row>
   </div>
@@ -156,21 +161,21 @@
            <div class="coin_data_icon">
             <ion-icon name="logo-facebook"></ion-icon>
            </div>
-           <span>{{coin.community_data.facebook_likes}} </span>
+           <span>{{coin.community_data?.facebook_likes}} </span>
            <span class="coin_data_name">Likes</span>
         </ion-col>
         <ion-col>
           <div class="coin_data_icon">
              <ion-icon name="logo-twitter"></ion-icon>
           </div>
-          <span>{{coin.community_data.twitter_followers}} </span>
+          <span>{{coin.community_data?.twitter_followers}} </span>
           <span class="coin_data_name">Followers</span>
         </ion-col>
         <ion-col>
           <div class="coin_data_icon">
              <ion-icon name="logo-reddit"></ion-icon>
           </div>
-          <span>{{coin.community_data.reddit_subscribers}} </span>
+          <span>{{coin.community_data?.reddit_subscribers}} </span>
           <span class="coin_data_name">Subscribers</span>
         </ion-col>
       </ion-row>

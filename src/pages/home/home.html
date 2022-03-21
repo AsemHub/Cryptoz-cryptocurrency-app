@@ -37,8 +37,11 @@
           </ng-container>
           <!-- price Column -->
           <ng-container matColumnDef="current_price">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> $Price </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.market_data.current_price[currentCurrency.toLowerCase()] | currency:currentCurrency }} </mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{'APP.HOME.PRICE' | translate}} </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{currentCurrency.toLowerCase()}} 
+               {{(element.market_data.current_price[currentCurrency.toLowerCase()] ? element.market_data.current_price[currentCurrency.toLowerCase()]: currencyOut(currentCurrency.toLowerCase(),element.market_data.current_price['usd'])) }} </mat-cell>
+            <!-- <mat-cell *matCellDef="let element"> {{currencyOut(element.market_data.current_price[currentCurrency.toLowerCase()], currentCurrency)  | currency:currentCurrency }} </mat-cell> -->
           </ng-container>
     
           <!-- 24 hour Column -->
@@ -69,7 +72,7 @@
           </ng-container>
     
           <!-- 14 Day Column -->
-          <ng-container  matColumnDef="price_change_14d">
+          <!-- <ng-container  matColumnDef="price_change_14d">
             <mat-header-cell *matHeaderCellDef mat-sort-header> 14d </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <div *ngIf="element.market_data.price_change_percentage_14d >= 0 then positive else negative" ></div>
@@ -80,7 +83,7 @@
                     <span class="nbr-negative">{{element.market_data.price_change_percentage_14d | percent }}</span>
                 </ng-template>
             </mat-cell>
-          </ng-container>
+          </ng-container> -->
           <!-- 30 Day Column -->
           <ng-container  matColumnDef="price_change_30d">
             <mat-header-cell *matHeaderCellDef mat-sort-header> 30d </mat-header-cell>

@@ -26,7 +26,7 @@ export class CryptoDetailsPage {
    is_favorite; // is a favorite coin
    currentCurrency = 'USD'; //default currency USD
    currentChartTheme  = "dark";
-
+   currencyPrice:any= {};
 
   constructor(public navCtrl: NavController,
              public navParams: NavParams,
@@ -38,31 +38,67 @@ export class CryptoDetailsPage {
 
       //retreive coin ID
       this.coin = this.navParams.get('coin');
+   
       this.is_favorite = this.coin.is_favorite;
 
       //GET THE CURRENT COIN DATA
       this.api.getCoinInfo(this.coin.id).then((data)=>{
         this.coin = data;
+        console.log(this.coin)
       });
 
       
   }
 
   ionViewDidLoad() {
+    
     this.settingProvider.settingSubject.subscribe((data) => {
-        this.currentCurrency = this.settingProvider.currentSetting.currency;
-        this.currentChartTheme = this.settingProvider.currentSetting.theme;
-        //GET chart data for  the current crypto
-         this.fetchCoinChartData();
+      this.currentCurrency = this.settingProvider.currentSetting.currency;
+      this.currentChartTheme = this.settingProvider.currentSetting.theme;
+      //GET chart data for  the current crypto
+      this.fetchCurrencyApi().then(()=>this.fetchCoinChartData())
+         
+         
     })
+
+  
+
+
   }
 
   fetchCoinChartData(){
       this.loadingChart = true;
-      this.api.getCoinChart(this.coin.id , this.currentCurrency , this.chart_filter).then((data)=>{
-        this.loadingChart = false;
-        this.initChart(data);
-    })
+      console.log("cryptoD", this.currentCurrency)
+      const otherPrice = this.currencyPrice[this.currentCurrency.toLowerCase()]
+      let arrayOfOtherCurrencies:any = Object.keys(this.currencyPrice);
+      
+      console.log("this.currencyPrice", this.currencyPrice)
+      console.log("arrayOfOtherCurrencies", arrayOfOtherCurrencies)
+      if(arrayOfOtherCurrencies.includes(this.currentCurrency.toLowerCase())){
+
+        this.api.getCoinChart(this.coin.id , "USD" , this.chart_filter).then((data)=>{
+          let newData = data;
+          console.log("DATA LYD CHART", newData)
+          let dataArray = newData["prices"];
+          let newPrices=[];
+          dataArray.map(e => {
+            newPrices.unshift( e[1]*otherPrice )
+          });
+          console.log("DATA LYD CHART dataArray", newPrices)
+
+          this.loadingChart = false;
+          newData["prices"]= newPrices
+          console.log("NEW DATA LYD CHART ", newData)
+
+          this.initChart(data);
+      })
+      }else{
+
+        this.api.getCoinChart(this.coin.id , this.currentCurrency , this.chart_filter).then((data)=>{
+          this.loadingChart = false;
+          this.initChart(data);
+      })
+      }
   }
 
   onFilterChange(value){
@@ -160,5 +196,18 @@ export class CryptoDetailsPage {
           data: Data.prices
         }]
       });
+  }
+  fetchCurrencyApi() {
+    return new Promise((resolve) => {
+      this.api.getCurrency().then(e=>{
+        this.currencyPrice = e;
+        resolve(true);
+      })
+    });
+
+  }
+  highLowDetails(currency,usdPrice){
+    console.log("cuurency out element", usdPrice)
+    return this.currencyPrice[currency]*usdPrice
   }
 }

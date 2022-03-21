@@ -14,6 +14,12 @@ import { AdMobFree } from '@ionic-native/admob-free';
 import { HTTP } from '@ionic-native/http';
 
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { httpLoaderFactory } from '../providers/setting/httpLoaderFactory';
+
+
+
 import { newsPage } from '../pages/news/news';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -51,6 +57,13 @@ import { Network } from '@ionic-native/network';
     IonicModule.forRoot(MyApp, { mode: 'md'}),
     IonicStorageModule.forRoot(),
     ComponentsModule,
+    TranslateModule.forRoot({
+      loader: {
+         provide: TranslateLoader,
+         useFactory: httpLoaderFactory,
+         deps: [HttpClient]
+      }
+   }),
     
   ],
   bootstrap: [IonicApp],
