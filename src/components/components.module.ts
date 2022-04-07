@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ChangeCurrencyComponent } from './change-currency/change-currency';
-import { IonicModule } from 'ionic-angular';
+import { IonicModule } from 'ionic-angular';;
 @NgModule({
-	declarations: [ChangeCurrencyComponent],
+	declarations: [ChangeCurrencyComponent,
+    ],
 	imports: [],
-	exports: [ChangeCurrencyComponent]
+	exports: [ChangeCurrencyComponent,
+    ]
 })
 export class ComponentsModule {}

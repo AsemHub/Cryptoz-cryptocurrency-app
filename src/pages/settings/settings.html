@@ -4,7 +4,7 @@
   <ion-navbar color="primary">
     <ion-title text-center>
       <ion-icon name="ios-cog-outline"></ion-icon>
-      Settings
+      {{'APP.HOME.SETTINGS' | translate}}
     </ion-title>
   </ion-navbar>
 
@@ -12,25 +12,34 @@
 
 
 <ion-content padding>
+  <span class="flag-icon flag-icon-gr"></span>
+  <img
+  alt="United States"
+  width="50px"
+  height="50px"
+  [src]="img"/>
+
+
+
     <ion-list class="list-setting">
       <ion-list-header>
-        General settings
+        {{'APP.HOME.GENERAL SETTINGS' | translate}}
       </ion-list-header>
       <ion-item>
-          <ion-label>Theme : Dark</ion-label>
+          <ion-label>{{'APP.HOME.THEME' | translate}}</ion-label>
          <ion-toggle  [(ngModel)]="isDarkTheme" (ionChange)="updateTheme()" checked="false"></ion-toggle>
       </ion-item>
       <ion-item class="item-currency"> 
-          <ion-label>Currency</ion-label>
-          <ion-select  [selectOptions]="{cssClass : 'select-currency'}" (ionChange)="changeCurrentCurrency()" (click)="initCurrencyIcon()" [(ngModel)]="currentCurrency">
+          <ion-label>{{'APP.HOME.CURRENCY' | translate}}</ion-label>
+          <ion-select  [selectOptions]="{cssClass : 'select-currency'}" (ionChange)="changeCurrentCurrency()" (click)="initCurrencyIcon(currentCurrency)" [(ngModel)]="currentCurrency">
               <ion-option  class="select-currency" *ngFor="let currency of currencyList" [value]="currency">
                 {{currency | uppercase}}
               </ion-option>
             </ion-select>
       </ion-item>
-      <ion-item class="item-currency"> 
-          <ion-label>Language</ion-label>
-          <ion-select  [selectOptions]="{cssClass : 'select-language'}" (ionChange)="changeCurrentLanguage($event)" (click)="initCurrencyIcon()" [(ngModel)]="currentLanguage">
+      <ion-item class="item-language"> 
+          <ion-label>{{'APP.HOME.LANGUAGE' | translate}}</ion-label>
+          <ion-select  [selectOptions]="{cssClass : 'select-language'}" (ionChange)="changeCurrentLanguage($event)" (click)="initlanguageIcon(currentLanguage)" [(ngModel)]="currentLanguage">
               <ion-option  class="select-language" *ngFor="let language of languageList" [value]="language" >
                 {{language | uppercase}}
               </ion-option>
@@ -39,13 +48,13 @@
     </ion-list>
     <ion-list class="list-setting">
         <ion-list-header>
-          About
+          {{'APP.HOME.ABOUT' | translate}}
         </ion-list-header>
         <ion-item (click)="showAlertCredit()">
-            <ion-label>Credits</ion-label>
+            <ion-label>{{'APP.HOME.CREDITS' | translate}}</ion-label>
         </ion-item>
      </ion-list>
 
-     <h6 ion-text text-center class="credits">Cryptoz V1.0.0</h6>
+     <h6 ion-text text-center class="credits"> {{'APP.HOME.DINARO' | translate}}</h6>
 
 </ion-content>

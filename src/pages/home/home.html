@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title text-center>   <ion-icon name="trending-up" ></ion-icon> All coins   </ion-title>
+    <ion-title text-center>   <ion-icon name="trending-up" ></ion-icon> {{'APP.HOME.All Coins' | translate}}   </ion-title>
     <ion-buttons right>
       <button (click)="search = !search" ion-button icon-only><ion-icon name="ios-search-outline"></ion-icon></button>
       <button (click)="openWatchList()" ion-button icon-only><ion-icon name="md-eye"></ion-icon></button>
@@ -11,20 +11,21 @@
 <ion-content>
       <ng-container *ngIf="!loading">
           <ion-item class="cp-search" *ngIf="search">
-            <ion-label stacked>Search</ion-label>
-            <ion-input (keyup)="applyFilter($event.target.value)" placeholder="Search" ></ion-input>
+            <ion-label stacked><h2>{{'APP.HOME.SEARCH' | translate}}</h2> </ion-label>
+            <ion-input (keyup)="applyFilter($event.target.value)" placeholder="{{'APP.HOME.SEARCH!' | translate}}" ></ion-input>
           </ion-item>
           <mat-table  #table [dataSource]="dataSource" matSort [class.marginTop]="search">
             <!-- Rank Column -->
           <ng-container matColumnDef="rank">
               <mat-header-cell fxFlex="20px" *matHeaderCellDef mat-sort-header> # </mat-header-cell>
               <mat-cell  fxFlex="20px" *matCellDef="let element; let i = index ">
-                <span class="crypto-rank ">#  {{i + 1}} </span>
+                <span class="crypto-rank ">#  {{i + 1}}  </span>
             </mat-cell>
           </ng-container>
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+    
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{'APP.HOME.NAME' | translate}}  </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <ion-row align-items-center>
                         <img [src]="element.image.small" alt="">
@@ -39,14 +40,14 @@
           <ng-container matColumnDef="current_price">
             <mat-header-cell *matHeaderCellDef mat-sort-header> {{'APP.HOME.PRICE' | translate}} </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              {{currentCurrency.toLowerCase()}} 
+              {{currentCurrency.toUpperCase()}} 
                {{(element.market_data.current_price[currentCurrency.toLowerCase()] ? element.market_data.current_price[currentCurrency.toLowerCase()]: currencyOut(currentCurrency.toLowerCase(),element.market_data.current_price['usd'])) }} </mat-cell>
             <!-- <mat-cell *matCellDef="let element"> {{currencyOut(element.market_data.current_price[currentCurrency.toLowerCase()], currentCurrency)  | currency:currentCurrency }} </mat-cell> -->
           </ng-container>
     
           <!-- 24 hour Column -->
           <ng-container  matColumnDef="price_change_24">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> 24H </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>  {{'APP.HOME.24H' | translate}} </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <div *ngIf="element.market_data.price_change_percentage_24h >= 0 then positive else negative" ></div>
                 <ng-template #positive>
@@ -59,7 +60,7 @@
           </ng-container>
           <!-- 7 Day Column -->
           <ng-container  matColumnDef="price_change_7d">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> 7d </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{'APP.HOME.7D' | translate}} </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <div *ngIf="element.market_data.price_change_percentage_7d >= 0 then positive else negative" ></div>
                 <ng-template #positive>
@@ -86,7 +87,7 @@
           </ng-container> -->
           <!-- 30 Day Column -->
           <ng-container  matColumnDef="price_change_30d">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> 30d </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{'APP.HOME.30D' | translate}} </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <div *ngIf="element.market_data.price_change_percentage_30d >= 0 then positive else negative" ></div>
                 <ng-template #positive>

@@ -1,5 +1,6 @@
 import { GlobalMarketPage } from './../pages/global-market/global-market';
 import { CryptoDetailsPage } from './../pages/crypto-details/crypto-details';
+import { WelcomePage } from './../pages/welcome/welcome';
 import { AngularMaterialModule } from './angular-material.module';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,7 +36,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AdmobFreeProvider } from '../providers/admob/admob';
 import { Network } from '@ionic-native/network';
 
-
 @NgModule({
   declarations: [
     MyApp,
@@ -43,9 +43,10 @@ import { Network } from '@ionic-native/network';
     HomePage,
     TabsPage,
     CryptoDetailsPage,
+    WelcomePage,
     GlobalMarketPage,
     SettingsPage,
-    watchListPage
+    watchListPage,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +74,7 @@ import { Network } from '@ionic-native/network';
     HomePage,
     TabsPage,
     CryptoDetailsPage,
+    WelcomePage,
     GlobalMarketPage,
     SettingsPage,
     watchListPage
@@ -87,7 +89,7 @@ import { Network } from '@ionic-native/network';
     AdMobFree,
     AdmobFreeProvider ,
     Network,
-    HTTP,
+        HTTP,
   ]
 })
 export class AppModule {}

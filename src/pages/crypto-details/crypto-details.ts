@@ -25,6 +25,7 @@ export class CryptoDetailsPage {
    loadingChart = true;
    is_favorite; // is a favorite coin
    currentCurrency = 'USD'; //default currency USD
+   currentLanguage = 'en'; //default lang en
    currentChartTheme  = "dark";
    currencyPrice:any= {};
 
@@ -55,6 +56,7 @@ export class CryptoDetailsPage {
     this.settingProvider.settingSubject.subscribe((data) => {
       this.currentCurrency = this.settingProvider.currentSetting.currency;
       this.currentChartTheme = this.settingProvider.currentSetting.theme;
+      this.currentLanguage = this.settingProvider.currentSetting.language;
       //GET chart data for  the current crypto
       this.fetchCurrencyApi().then(()=>this.fetchCoinChartData())
          

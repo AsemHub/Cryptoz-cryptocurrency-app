@@ -1,10 +1,66 @@
 {
   "APP": {
     "HOME": {
-      "PRICE": "$السعر"
+      "PRICE": "$السعر",
+      "NAME": "الاسم",
+      "SEARCH": "بحث عن العملات الرقمية",
+      "SEARCH!": "ادخل رمز العملة",
+      "All Coins": "جميع العملات",
+      "24H": "24سا",
+      "7D": "7أيام",
+      "30D": "30يوم",
+      "SETTINGS": "الإعدادات",
+      "GENERAL SETTINGS": "الإعدادات العامة",
+      "THEME": "السمة",
+      "CURRENCY": "العملة",
+      "LANGUAGE": "اللغة",
+      "ABOUT": "حول",
+      "CREDITS": "الإعتمادات",
+      "DINARO": "دينارو",
+      "NEWS": "أخبار",
+      "HOME": "الرئيسية",
+      "GLOBAL": "السوق",
+      "GLOBAL MARKET": "السوق",
+      "TOTAL MARKET CAPITALIZATION": "القيمة السوقية العالمية",
+      "TOTAL VALUME": "إجمالي التداول",
+      "CRYPTOCURRENCIES": " العملات المشفرة",
+      "ACTIVE": "نشط",
+      "UPCOMING": "قادم",
+      "ONGOING": "جاري",
+      "ENDED": "مكتمل",
+      "MARKET SHARE": "توزيع الرأسمال",
+      "OTHERS": " أخرى",
+      "BRANDS": " علامة "
     },
     "CURRENCIES": {
-      "usd": "دولار"
+      "usd": "دولار أمريكي",
+      "lyd": "دينار ليبي",
+        "syp": "ليرة سورية",
+        "sdg": "جنيه سوداني",
+        "rub": "روبل روسي",
+        "egp": "جنيه مصري"
+  },
+    "CRYPTO DETAILS": {
+      "24HLOW": "حدود دنيا خلال 24 ساعة",
+      "24HHIGH": "حدود عليا خلال 24 ساعة",
+      "24H": "24سا",
+      "7DAYS": "7أيام",
+      "1MONTH": "شهر",
+      "1YEAR": "سنة",
+      "MAX": "أقصاه",
+      "COIN INFO": "معلومات العملة",
+      "RANK": "الترتيب",
+      "MARKET CAP": "إجمالي رأس المال",
+      "TOTAL VOLUME": "إجمالي التداول",
+      "(24H)": "24ساعة",
+      "(7DAYS)": "7أيام",
+      "(30DAYS)": "30يوم",
+      "(60DAYS)": "60يوم",
+      "(1YEAR)": "سنة",
+      "COMMUNITY INFO": "سوشال",
+      "LIKES": "إعجابات",
+      "FOLLOWERES": "متابعين",
+      "SUBSICRIBERS": "مشتركين"
   },
     "BODY": "It works very well!"
   }

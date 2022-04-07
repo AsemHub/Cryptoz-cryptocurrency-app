@@ -11,11 +11,14 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SettingsPage {
 
-  currencyList = ['usd','aud','eur','cad','aed','gbp','jpy','idr','inr', 'lyd', 'egp', 'rub', 'syp', 'sdg', 'asem'];
-  languageList = ['en', 'ar'];
-  currentCurrency = null;
-  currentLanguage = null;
+  currencyListNew =[{description: "usd" , symbol:"http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"} , {description: "LY" , symbol:"http://purecatamphetamine.github.io/country-flag-icons/3x2/LY.svg"}]
+
+  currencyList = ['usd','aud','eur','cad','aed','gbp','jpy','idr','inr', 'lyd', 'egp', 'rub', 'syp', 'sdg'];
+  languageList = ['en', 'ar' ];
+  currentCurrency = this.settingProvider.currentSetting.currency;
+  currentLanguage = this.settingProvider.currentSetting.language;
   isDarkTheme  = true;
+  img:string = this.getStorageImage(this.currentLanguage)
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -35,34 +38,66 @@ export class SettingsPage {
     this.settingProvider.settingSubject.subscribe((data) => {
       //get the current currency
       this.currentCurrency = this.settingProvider.currentSetting.currency;
+      this.currentLanguage = this.settingProvider.currentSetting.language;
       this.isDarkTheme =  (this.settingProvider.currentSetting.theme === 'dark');
     })
 
     //this.currentCurrency = this.settingProvider.settings.currency.toLowerCase();
     this.addCurrentCurrencyFlag();
+    this.addCurrentLanguageFlag();
+  }
+  addFlag(el:HTMLElement ) {
+    var img = document.createElement('img');
+    img.src = "http://purecatamphetamine.github.io/country-flag-icons/3x2/"+el.innerText.substring(0, el.innerText.length - 1)+".svg";
+    img.className = "imgStyle"
+
+    el.innerHTML = img.outerHTML +  el.innerHTML;
   }
 
-  addFlag(el:HTMLElement) {
-    var icon = document.createElement('i');
-    icon.className = "flag-icon flag-icon-"+ el.innerText.substring(0, el.innerText.length - 1).toLowerCase(); 
-    el.innerHTML = icon.outerHTML +  el.innerHTML;
-  }
-
-  initCurrencyIcon(){
+  initCurrencyIcon(currency){
     setTimeout(()=> {
-      var currencyList = document.querySelectorAll('.select-currency .alert-radio-label');
-      var icon = document.createElement('i');
+      var currencyList = document.querySelectorAll('.select-currency .alert-radio-label ');
+      var icon = document.createElement('span');
       Array.from(currencyList).forEach((el:HTMLElement)=> {
-          this.addFlag(el);
+           this.addFlag(el);
+      });
+    }, 100);
+  }
+
+  addLanguageFlag(el:HTMLElement ) {
+    let language = el.innerText == 'EN'? 'US':'LY'    
+    var img = document.createElement('img');
+    img.src = "http://purecatamphetamine.github.io/country-flag-icons/3x2/"+language+".svg";
+    img.className = "imgStyle"
+
+    el.innerHTML = img.outerHTML +  el.innerHTML;
+  }
+
+  initlanguageIcon(language){
+    setTimeout(()=> {
+      var languageList = document.querySelectorAll('.select-language .alert-radio-label ');
+      var icon = document.createElement('span');
+      Array.from(languageList).forEach((el:HTMLElement)=> {
+           this.addLanguageFlag(el );
       });
     }, 100);
   }
 
   addCurrentCurrencyFlag(){
     setTimeout(()=> {
+      console.log("entering in curren funciton")
       var currentCurrencyNode = <HTMLElement> document.querySelector('.item-currency .select-text');
       currentCurrencyNode.innerHTML = this.currentCurrency.toUpperCase();
       this.addFlag(currentCurrencyNode);
+    }, 100);
+  }
+
+  addCurrentLanguageFlag(){
+    setTimeout(()=> {
+      var currentLanguageNode = <HTMLElement> document.querySelector('.item-language .select-text');
+      currentLanguageNode.innerHTML = this.currentLanguage.toUpperCase();
+      console.log("in add current " + currentLanguageNode.innerText)
+      this.addLanguageFlag(currentLanguageNode);
     }, 100);
   }
 
@@ -73,10 +108,22 @@ export class SettingsPage {
   }
 
   changeCurrentLanguage(event) {
-    console.log("EVENT SELECT LINGO", event)
+    this.addMainFlag(event)
+    this.addCurrentLanguageFlag();
     this.settingProvider.currentSetting.language = event; 
     this._translate.use(event);
     this.settingProvider.setSettings();
+  }
+
+  getStorageImage(currentCurrency){
+   
+    let language = currentCurrency.toUpperCase() == 'EN'? 'US':'LY'    
+    return "http://purecatamphetamine.github.io/country-flag-icons/3x2/"+language+".svg";
+  }
+
+  addMainFlag(event){
+  let language = event.toUpperCase() == 'EN'? 'US':'LY'    
+   this.img = "http://purecatamphetamine.github.io/country-flag-icons/3x2/"+language+".svg";
   }
 
   showAlertCredit() {

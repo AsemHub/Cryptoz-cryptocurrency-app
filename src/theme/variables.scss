@@ -42,16 +42,26 @@ $colors: (
 );
 
 @font-face {
-  font-family: 'gilroy';
-  src:url('../assets/fonts/gilroy-light-webfont.ttf') format('truetype');
-  font-weight: normal;
+  font-family: 'Tajawal';
+  src:url('../assets/fonts/tajawal-v8-arabic-regular.ttf') format('truetype');
+  font-weight: 250;
   font-style: normal;
  }
- $font-family-base: "gilroy";
+ $font-family-base: "Tajawal";
  $font-family-ios-base: $font-family-base;
  $font-family-md-base: $font-family-base;
  $font-family-wp-base: $font-family-base;
 
+ @font-face {
+  font-family: 'Bakbak One';
+  src:url('../assets/fonts/bakbak-one-v5-latin-regular.ttf') format('truetype');
+  font-weight: 250;
+  font-style: normal;
+ }
+ $font-family-base: "Bakbak One";
+ $font-family-ios-base: $font-family-base;
+ $font-family-md-base: $font-family-base;
+ $font-family-wp-base: $font-family-base;
 
 @import "ionic.theme.default";
 

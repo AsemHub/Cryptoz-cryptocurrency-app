@@ -13,7 +13,7 @@ export class ChangeCurrencyComponent {
 
 
  getFlag() {
-   return 'flag-icon flag-icon-'+ this.settingsProvider.currentSetting.currency.substring(0, this.settingsProvider.currentSetting.currency.length - 1).toLowerCase();
+   return 'fi fi-'+ this.settingsProvider.currentSetting.currency.substring(0, this.settingsProvider.currentSetting.currency.length - 1).toLowerCase() + " fis";
  }
 
  pushSetting(){

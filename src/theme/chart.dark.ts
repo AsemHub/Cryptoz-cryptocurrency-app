@@ -1,10 +1,10 @@
 export const darkChartTheme = {
-  colors: ['#ac5d70', '#ab689b'],
+  colors: ['#5353C5', '#3333a4'],
   chart: {
       backgroundColor: {
           linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
           stops: [
-              [0, '#201f27']
+              [0, '#100F55']
           ]
       },
       style: {
@@ -195,12 +195,12 @@ export const darkChartTheme = {
 
 
 export const globalChartTheme = {
-    colors: ['#A26A90','#A26272', '#A2698B', '#A26680', '#A26171'],
+    colors: ['#100F2B','##100F55', '#A2698B', '#A26680', '#A26171'],
     chart: {
         backgroundColor: {
             linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
             stops: [
-              [0, '#201f27']
+              [0, '#5353C5']
             ]
         },
         style: {

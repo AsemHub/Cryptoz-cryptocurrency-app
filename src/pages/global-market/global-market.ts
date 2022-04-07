@@ -8,6 +8,7 @@ import { SettingProvider } from '../../providers/setting/setting';
 import { globalChartTheme } from '../../theme/chart.dark';
 import { globalLightChartTheme } from '../../theme/chart.light';
 import { AdmobFreeProvider } from '../../providers/admob/admob';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -15,9 +16,11 @@ import { AdmobFreeProvider } from '../../providers/admob/admob';
   selector: 'page-global-market',
   templateUrl: 'global-market.html',
 })
+
 export class GlobalMarketPage {
 
-
+  others_t;
+  brands_t;
   currentCurrency = 'usd' //current currency settings, Defualt USD
   marketData ; //retreive market data
   active_cryptocurrencies = null;
@@ -33,12 +36,14 @@ export class GlobalMarketPage {
               public navParams: NavParams,
               public http: Http,
               public api : ApiProvider,
-              public settingsProvider : SettingProvider,
+              public settingsProvider : SettingProvider, 
+              private _translate:TranslateService,
               public admob:AdmobFreeProvider) {
   }
 
 
   ionViewWillEnter(){
+    this.fetch_globalMarket();
     this.admob.showRandomAds();
   }
   
@@ -63,7 +68,10 @@ export class GlobalMarketPage {
   }
 
   ionViewDidLoad() {
-    this.fetch_globalMarket();
+    this._translate.get('APP.HOME').subscribe(value => {
+        this.others_t = value['OTHERS']
+        this.brands_t = value['BRANDS']
+    })
     this.currentCurrency = this.settingsProvider.currentSetting.currency;
     this.settingsProvider.settingSubject.subscribe((data) => {
         this.currentCurrency = data.currency;
@@ -109,7 +117,7 @@ export class GlobalMarketPage {
             text:''
         },
         series: [{
-            name: 'Brands',
+            name: this.brands_t,
             colorByPoint: true,
             data: [{
                 name: 'BTC',
@@ -127,7 +135,7 @@ export class GlobalMarketPage {
                 y: this.market_cap_percentage.ltc
             },
             {
-                name: 'OTHERS',
+                name: this.others_t,
                 y: 100 - Object.keys(this.market_cap_percentage).map((key) => this.market_cap_percentage[key] ).reduce((a, b) => a + b) 
             }]
         }]

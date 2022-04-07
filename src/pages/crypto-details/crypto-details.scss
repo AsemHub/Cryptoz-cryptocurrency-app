@@ -55,7 +55,7 @@ page-crypto-details {
     .coin_data_name{
       display: block;
       font-size: 14px;
-      color: #bd8aa8;
+      color: #02D3ED;
     }
   }
 
@@ -64,9 +64,9 @@ page-crypto-details {
       color: white;
       font-size: 12px;
     }
-    border: solid 2px #ac607a;
+    border: solid 2px #02D3ED;
     .mat-button-toggle-checked {
-      background-color: #ac607a;
+      background-color: linear-gradient(to right, #02D3ED, #03b0c7);
       color:white;
     }
   }

@@ -1,7 +1,37 @@
 {
   "APP": {
     "HOME": {
-      "PRICE": "$Price"
+      "PRICE": "$Price",
+      "NAME": "Name",
+      "SEARCH": "Coin and Token Search",
+      "SEARCH!": "Search Coin or Token Name",
+      "All Coins": "All Coins",
+      "24H": "24H",
+      "7D": "7D",
+      "30D": "30D",
+      "SETTINGS": "SETTINGS",
+      "GENERAL SETTINGS": "GENERAL SETTINGS",
+      "THEME": "THEME",
+      "CURRENCY": "CURRENCY",
+      "LANGUAGE": "LANGUAGE",
+      "ABOUT": "ABOUT",
+      "CREDITS": "CREDITS",
+      "DINARO": "DINARO",
+      "NEWS": "NEWS",
+      "HOME": "HOME",
+      "GLOBAL": "GLOBAL",
+      "GLOBAL MARKET": "GLOBAL MARKET",
+      "TOTAL MARKET CAPITALIZATION": "TOTAL MARKET CAPITALIZATION",
+      "TOTAL VALUME": "TOTAL VALUME",
+      "CRYPTOCURRENCIES": "CRYPTOCURRENCIES",
+      "ACTIVE": "ACTIVE",
+      "UPCOMING": "UPCOMING",
+      "ONGOING": "ONGOING",
+      "ENDED": "ENDED",
+      "MARKET SHARE": "MARKET SHARE",
+      "OTHERS": "OTHERS",
+      "BRANDS": "BRANDS"
+
     },
     "CURRENCIES": {
         "usd": "US DOLLAR",
@@ -9,9 +39,30 @@
         "syp": "SYP",
         "sdg": "SDG",
         "rub": "RUB",
-        "egp": "EGP",
-        "asem": "ASEM"
+        "egp": "EGP"
     },
+    "CRYPTO DETAILS": {
+      "24HLOW": "24H LOW",
+      "24HHIGH": "24H HIGH",
+      "24H": "24H",
+      "7DAYS": "7 DAYS",
+      "1MONTH": "1 MONTH",
+      "1YEAR": "1 YEAR",
+      "MAX": "MAX",
+      "COIN INFO": "COIN INFO",
+      "RANK": "RANK",
+      "MARKET CAP": "MARKET CAP",
+      "TOTAL VOLUME": "TOTAL VOLUME",
+      "(24H)": "24H",
+      "(7DAYS)": "7 DAYS",
+      "(30DAYS)": "30 DAYS",
+      "(60DAYS)": "60 DAYS",
+      "(1YEAR)": "1 YEAR",
+      "COMMUNITY INFO": "COMMUNITY INFO",
+      "LIKES": "LIKES",
+      "FOLLOWERES": "FOLLOWERES",
+      "SUBSICRIBERS": "SUBSICRIBERS"
+  },
     "BODY": "It works very well!"
   }
 }

@@ -1,5 +1,5 @@
 export const lightChartTheme = {
-  colors: ['#b6629d', '#ab689b'],
+  colors: ['#5353C5', '#3333a4'],
   chart: {
       backgroundColor: {
           linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
@@ -195,12 +195,12 @@ export const lightChartTheme = {
 
 
 export const globalLightChartTheme = {
-    colors: ['#A26A90','#A26272', '#A2698B', '#A26680', '#A26171'],
+    colors: ['#02D3ED','#0297ed', '#02b2ed', '#02caed', '#0264ed'],
     chart: {
         backgroundColor: {
             linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
             stops: [
-              [0, '#f8f8f8']
+              [0, '#ffffff']
             ]
         },
         style: {
@@ -357,14 +357,14 @@ export const globalLightChartTheme = {
 
     navigator: {
         handles: {
-            backgroundColor: '#666',
-            borderColor: '#AAA'
+            backgroundColor: '#0264ed',
+            borderColor: '#0264ed'
         },
         outlineColor: '#CCC',
         maskFill: 'rgba(255,255,255,0.1)',
         series: {
-            color: '#7798BF',
-            lineColor: '#A6C7ED'
+            color: '#0264ed',
+            lineColor: '#0264ed'
         },
         xAxis: {
             gridLineColor: '#505053'
@@ -375,18 +375,18 @@ export const globalLightChartTheme = {
         barBackgroundColor: '#808083',
         barBorderColor: '#808083',
         buttonArrowColor: '#CCC',
-        buttonBackgroundColor: '#606063',
+        buttonBackgroundColor: '#0264ed',
         buttonBorderColor: '#606063',
-        rifleColor: '#FFF',
+        rifleColor: '#0264ed',
         trackBackgroundColor: '#404043',
         trackBorderColor: '#404043'
     },
 
     // special colors for some of the
     legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
-    background2: '#505053',
-    dataLabelsColor: '#B0B0B3',
-    textColor: '#C0C0C0',
+    background2: '#ffffff',
+    dataLabelsColor: '#0264ed',
+    textColor: '#0264ed',
     contrastTextColor: '#F0F0F3',
     maskColor: 'rgba(255,255,255,0.3)'
 };

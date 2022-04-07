@@ -12,11 +12,11 @@
   <div class="crypto-info">
     <ion-row>
        <ion-col text-right>
-          <span class="coin-red">24h Low </span>
+          <span class="coin-red">{{'APP.CRYPTO DETAILS.24HLOW' | translate}} </span>
        </ion-col>
        <ion-col col-1 > / </ion-col>
        <ion-col text-left>
-          <span class="coin-green">24h High</span>
+          <span class="coin-green">{{'APP.CRYPTO DETAILS.24HHIGH' | translate}}</span>
        </ion-col>
     </ion-row>
     <ion-row>
@@ -35,11 +35,11 @@
      </ion-row>
   </div>
   <mat-button-toggle-group  #group="matButtonToggleGroup" [value]="chart_filter" (change)="onFilterChange(group.value)"   margin-top name="chartTime">
-    <mat-button-toggle value="24">24h</mat-button-toggle>
-    <mat-button-toggle value="7">7 Days</mat-button-toggle>
-    <mat-button-toggle value="60">1 month</mat-button-toggle>
-    <mat-button-toggle value="365">1 year</mat-button-toggle>
-    <mat-button-toggle value="max">max</mat-button-toggle>
+    <mat-button-toggle value="24">{{'APP.CRYPTO DETAILS.24H' | translate}}</mat-button-toggle>
+    <mat-button-toggle value="7">{{'APP.CRYPTO DETAILS.7DAYS' | translate}}</mat-button-toggle>
+    <mat-button-toggle value="60">{{'APP.CRYPTO DETAILS.1MONTH' | translate}}</mat-button-toggle>
+    <mat-button-toggle value="365">{{'APP.CRYPTO DETAILS.1YEAR' | translate}}</mat-button-toggle>
+    <mat-button-toggle value="max">{{'APP.CRYPTO DETAILS.MAX' | translate}}</mat-button-toggle>
   </mat-button-toggle-group>
 <!-- if chart API is loading display loading_bars -->
  <ng-container *ngIf="loadingChart">
@@ -52,12 +52,13 @@
   <div [hidden]="loadingChart" id="chart-container" style="display: block;"></div>
   <div class="coin-info">
     <h1 class="coin-info-title">
-      Coin info
+      {{'APP.CRYPTO DETAILS.COIN INFO' | translate}}
     </h1>
     <div class="coin-info-card">
         <ion-row>
           <ion-col col-6 text-left>
-            <span class="coin-info-name">Rank</span>
+            <span class="coin-info-name">{{'APP.CRYPTO DETAILS.RANK' | translate}}
+            </span>
           </ion-col>
           <ion-col col-6 class="coin-info-detail">
            # {{coin.coingecko_rank}}
@@ -65,7 +66,8 @@
         </ion-row>
         <ion-row>
             <ion-col col-6 text-left>
-              <span class="coin-info-name">Market cap</span>
+              <span class="coin-info-name">{{'APP.CRYPTO DETAILS.MARKET CAP' | translate}}
+              </span>
             </ion-col>
             <ion-col col-6 class="coin-info-detail">
                 {{coin.market_data.market_cap[currentCurrency.toLowerCase()]  |  currency:currentCurrency }} ({{currentCurrency | uppercase}})
@@ -73,7 +75,8 @@
         </ion-row>
         <ion-row>
             <ion-col col-6 text-left>
-              <span class="coin-info-name">Total volume</span>
+              <span class="coin-info-name">{{'APP.CRYPTO DETAILS.TOTAL VOLUME' | translate}}
+              </span>
             </ion-col>
             <ion-col col-6 class="coin-info-detail">
                 {{coin.market_data.total_volume[currentCurrency.toLowerCase()]  |  currency:currentCurrency }} ({{currentCurrency | uppercase}})
@@ -81,7 +84,8 @@
         </ion-row>
         <ion-row>
             <ion-col col-6 text-left>
-              <span class="coin-info-name">(24h)</span>
+              <span class="coin-info-name">{{'APP.CRYPTO DETAILS.(24H)' | translate}}
+              </span>
             </ion-col>
             <ion-col col-6 class="coin-info-detail">
                 <div *ngIf="coin.market_data.price_change_percentage_24h >= 0 then positive24 else negative24" ></div>
@@ -95,7 +99,8 @@
         </ion-row>
         <ion-row>
             <ion-col col-6 text-left>
-              <span class="coin-info-name">(7 days)</span>
+              <span class="coin-info-name">{{'APP.CRYPTO DETAILS.(7DAYS)' | translate}}
+              </span>
             </ion-col>
             <ion-col col-6 class="coin-info-detail">
                 <div *ngIf="coin.market_data.price_change_percentage_7d >= 0 then positive7d else negative7d" ></div>
@@ -109,7 +114,7 @@
         </ion-row>
         <ion-row>
             <ion-col col-6 text-left>
-              <span class="coin-info-name">(30 days)</span>
+              <span class="coin-info-name">{{'APP.CRYPTO DETAILS.(30DAYS)' | translate}}</span>
             </ion-col>
             <ion-col col-6 class="coin-info-detail">
                 <div *ngIf="coin.market_data.price_change_percentage_30d >= 0 then positive30d else negative30d" ></div>
@@ -123,7 +128,7 @@
         </ion-row>
         <ion-row>
           <ion-col col-6 text-left>
-            <span class="coin-info-name">(60 Days)</span>
+            <span class="coin-info-name">{{'APP.CRYPTO DETAILS.(60DAYS)' | translate}}</span>
           </ion-col>
           <ion-col col-6 class="coin-info-detail">
               <div *ngIf="coin.market_data.price_change_percentage_60d >= 0 then positive60d else negative60d" ></div>
@@ -137,7 +142,7 @@
         </ion-row>
         <ion-row>
             <ion-col col-6 text-left>
-              <span class="coin-info-name">(1 year)</span>
+              <span class="coin-info-name">{{'APP.CRYPTO DETAILS.(1YEAR)' | translate}}</span>
             </ion-col>
             <ion-col col-6 class="coin-info-detail">
                 <div *ngIf="coin.market_data.price_change_percentage_1y >= 0 then positive1y else negative1y" ></div>
@@ -153,7 +158,7 @@
   </div>
   <div class="coin-info">
     <h1 class="coin-info-title">
-      Community info
+      {{'APP.CRYPTO DETAILS.COMMUNITY INFO' | translate}}
     </h1>
     <div class="coin-info-card">
       <ion-row class="coin_community_data">
@@ -162,21 +167,21 @@
             <ion-icon name="logo-facebook"></ion-icon>
            </div>
            <span>{{coin.community_data?.facebook_likes}} </span>
-           <span class="coin_data_name">Likes</span>
+           <span class="coin_data_name">{{'APP.CRYPTO DETAILS.LIKES' | translate}}</span>
         </ion-col>
         <ion-col>
           <div class="coin_data_icon">
              <ion-icon name="logo-twitter"></ion-icon>
           </div>
           <span>{{coin.community_data?.twitter_followers}} </span>
-          <span class="coin_data_name">Followers</span>
+          <span class="coin_data_name">{{'APP.CRYPTO DETAILS.FOLLOWERES' | translate}}</span>
         </ion-col>
         <ion-col>
           <div class="coin_data_icon">
              <ion-icon name="logo-reddit"></ion-icon>
           </div>
           <span>{{coin.community_data?.reddit_subscribers}} </span>
-          <span class="coin_data_name">Subscribers</span>
+          <span class="coin_data_name">{{'APP.CRYPTO DETAILS.SUBSICRIBERS' | translate}}</span>
         </ion-col>
       </ion-row>
     </div>

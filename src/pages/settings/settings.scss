@@ -9,7 +9,7 @@ page-settings {
 }
 
 .alert-wrapper{
-    background: linear-gradient(to right, #ac5d70, #ab689b);
+    background: linear-gradient(to right, #02D3ED, #03b0c7);
     * {
         color: white !important;
     }
@@ -19,4 +19,12 @@ page-settings {
     .alert-radio-inner{
         background-color: white;;
     }
+    .input-wrapper{
+        background-color: #100F2B;
+    }
+}
+.imgStyle{
+    width: 30px;
+    height: 30px;
+    float: right
 }

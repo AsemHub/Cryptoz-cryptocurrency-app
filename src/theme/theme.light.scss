@@ -1,14 +1,14 @@
 .light-theme {
-    $primary : #b6629d;
+    $primary : #5353C5;
 
     .header .toolbar-background {
-        background: linear-gradient(to right, #ac5d70, #ab689b);
+        background: linear-gradient(to right, #5353C5, #3333a4);
     }
     page-home .mat-header-row {
         background: #f8f8f8;
         &::before {
             content: "";
-            background: linear-gradient(to right, #ac5d70, #ab689b);;
+            background: linear-gradient(to right, #5353C5, #3333a4);;
             height: 3px !important;
             width: 100%;
             position: absolute;
@@ -19,7 +19,7 @@
 
     .ion-page {
         .header::after, .tabbar::before {
-          background: linear-gradient(to right, #ac5d70, #ab689b);
+          background: linear-gradient(to right, #5353C5, #3333a4);
           bottom: 0;
           height: 2px;
         }
@@ -47,7 +47,7 @@
         color: inherit;
     }
     .mat-button-toggle-checked *, page-global-market .coin-card-pink {
-        color: white !important;
+        color: #5353C5 !important;
     }
     change-currency .currency-change, page-crypto-details .coin-green {
         color: #029d69;
