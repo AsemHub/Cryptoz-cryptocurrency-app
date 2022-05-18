@@ -35,6 +35,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AdmobFreeProvider } from '../providers/admob/admob';
 import { Network } from '@ionic-native/network';
+import { WelcomePageModule } from '../pages/welcome/welcome.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { Network } from '@ionic-native/network';
     HomePage,
     TabsPage,
     CryptoDetailsPage,
-    WelcomePage,
+    // WelcomePage,
     GlobalMarketPage,
     SettingsPage,
     watchListPage,
@@ -53,6 +54,7 @@ import { Network } from '@ionic-native/network';
     BrowserAnimationsModule,
     AngularMaterialModule,
     CdkTableModule,
+    WelcomePageModule,
     HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp, { mode: 'md'}),

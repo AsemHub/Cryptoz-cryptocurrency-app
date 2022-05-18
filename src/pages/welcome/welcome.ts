@@ -124,8 +124,8 @@ export class WelcomePage {
 
   }
   addFlag(el:HTMLElement) {
-    var icon = document.createElement('span');
-    icon.className = "fi fi-"+ el.innerText.substring(0, el.innerText.length - 1).toLowerCase() + " fis"; 
+    var icon = document.createElement('i');
+    icon.className = "flag-icon flag-icon-"+ el.innerText.substring(0, el.innerText.length - 1).toLowerCase(); 
     el.innerHTML = icon.outerHTML +  el.innerHTML;
   }
   addCurrentCurrencyFlag(){
@@ -143,7 +143,7 @@ export class WelcomePage {
   initCurrencyIcon(){
     setTimeout(()=> {
       var currencyList = document.querySelectorAll('.select-currency .alert-radio-label');
-      var icon = document.createElement('span');
+      var icon = document.createElement('i');
       Array.from(currencyList).forEach((el:HTMLElement)=> {
           this.addFlag(el);
       });

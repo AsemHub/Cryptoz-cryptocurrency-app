@@ -11,14 +11,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SettingsPage {
 
-  currencyListNew =[{description: "usd" , symbol:"http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"} , {description: "LY" , symbol:"http://purecatamphetamine.github.io/country-flag-icons/3x2/LY.svg"}]
-
   currencyList = ['usd','aud','eur','cad','aed','gbp','jpy','idr','inr', 'lyd', 'egp', 'rub', 'syp', 'sdg'];
   languageList = ['en', 'ar' ];
   currentCurrency = this.settingProvider.currentSetting.currency;
   currentLanguage = this.settingProvider.currentSetting.language;
   isDarkTheme  = true;
-  img:string = this.getStorageImage(this.currentLanguage)
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -46,18 +43,16 @@ export class SettingsPage {
     this.addCurrentCurrencyFlag();
     this.addCurrentLanguageFlag();
   }
-  addFlag(el:HTMLElement ) {
-    var img = document.createElement('img');
-    img.src = "http://purecatamphetamine.github.io/country-flag-icons/3x2/"+el.innerText.substring(0, el.innerText.length - 1)+".svg";
-    img.className = "imgStyle"
-
-    el.innerHTML = img.outerHTML +  el.innerHTML;
+  addFlag(el:HTMLElement) {
+    var icon = document.createElement('i');
+    icon.className = "flag-icon flag-icon-"+ el.innerText.substring(0, el.innerText.length - 1).toLowerCase(); 
+    el.innerHTML = icon.outerHTML +  el.innerHTML;
   }
 
   initCurrencyIcon(currency){
     setTimeout(()=> {
       var currencyList = document.querySelectorAll('.select-currency .alert-radio-label ');
-      var icon = document.createElement('span');
+      var icon = document.createElement('i');
       Array.from(currencyList).forEach((el:HTMLElement)=> {
            this.addFlag(el);
       });
@@ -65,18 +60,16 @@ export class SettingsPage {
   }
 
   addLanguageFlag(el:HTMLElement ) {
-    let language = el.innerText == 'EN'? 'US':'LY'    
-    var img = document.createElement('img');
-    img.src = "http://purecatamphetamine.github.io/country-flag-icons/3x2/"+language+".svg";
-    img.className = "imgStyle"
-
-    el.innerHTML = img.outerHTML +  el.innerHTML;
+    let language = el.innerText == 'EN'? 'US':'LY'  
+    var icon = document.createElement('i');
+    icon.className = "flag-icon flag-icon-"+ language.toLowerCase(); 
+    el.innerHTML = icon.outerHTML +  el.innerHTML;
   }
 
   initlanguageIcon(language){
     setTimeout(()=> {
       var languageList = document.querySelectorAll('.select-language .alert-radio-label ');
-      var icon = document.createElement('span');
+      var icon = document.createElement('i');
       Array.from(languageList).forEach((el:HTMLElement)=> {
            this.addLanguageFlag(el );
       });
@@ -108,23 +101,12 @@ export class SettingsPage {
   }
 
   changeCurrentLanguage(event) {
-    this.addMainFlag(event)
     this.addCurrentLanguageFlag();
     this.settingProvider.currentSetting.language = event; 
     this._translate.use(event);
     this.settingProvider.setSettings();
   }
 
-  getStorageImage(currentCurrency){
-   
-    let language = currentCurrency.toUpperCase() == 'EN'? 'US':'LY'    
-    return "http://purecatamphetamine.github.io/country-flag-icons/3x2/"+language+".svg";
-  }
-
-  addMainFlag(event){
-  let language = event.toUpperCase() == 'EN'? 'US':'LY'    
-   this.img = "http://purecatamphetamine.github.io/country-flag-icons/3x2/"+language+".svg";
-  }
 
   showAlertCredit() {
     const alert = this.alertCtrl.create({
